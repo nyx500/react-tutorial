@@ -1,32 +1,12 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import './styles.css'
+import { books } from './books'
+// This is a default export, so you don't have to call the import Book. Instead, it's possible to name it whatever you want
+import SpecificBook from './book'
+import { greeting, message } from './testing/test'
 
-const books = [
-  {
-    id: 1,
-    img: 'https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX482_BO1,204,203,200_.jpg',
-    title: 'I Love You to the Moon and Back',
-    author: 'Amelia Hepworth',
-    price: '$1.25',
-  },
-  {
-    id: 2,
-    img: 'https://images-na.ssl-images-amazon.com/images/I/41D3enj6JVS._SX324_BO1,204,203,200_.jpg',
-    title:
-      'The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma',
-    author: 'Bessel van der Kolk',
-    price: '$11.99',
-  },
-  {
-    id: 3,
-    img: 'https://images-na.ssl-images-amazon.com/images/I/51K+mTjYreL._SY498_BO1,204,203,200_.jpg',
-    title: 'Why a Daughter Needs a Dad',
-    author: 'Gregory Lang',
-    illustrator: 'Susanna Leonard Hill',
-    price: '$9.73',
-  },
-]
+console.log(greeting, message)
 
 // Returns a stateless functional component
 // Always return JSX
@@ -37,60 +17,9 @@ function BookList() {
   return (
     <section className='booklist'>
       {books.map((book) => {
-        return <Book key={book.id} {...book}></Book>
+        return <SpecificBook key={book.id} {...book}></SpecificBook>
       })}
     </section>
-  )
-}
-
-const Book = ({ id, img, title, author, illustrator, price }) => {
-  // Function which takes an event parameter
-  const clickHandler = (e) => {
-    console.log(e.target)
-  }
-
-  const complexFunction = (id) => {
-    const articleArray = [...document.getElementsByTagName('article')]
-    let thisArticle = articleArray.find((article) => {
-      return Number(article.id) === id
-    })
-    thisArticle.style.display = 'none'
-  }
-
-  return (
-    <article id={id} className='book'>
-      <img src={img} alt='book' />
-      <h1>{title}</h1>
-      <h3>{author}</h3>
-      <h3>{illustrator}</h3>
-      <h5
-        style={{
-          color: '#617d98',
-          fontSize: '0.75rem',
-          margin: '0.25rem',
-          letterSpacing: '0.5px',
-        }}
-        onMouseOver={() => {
-          const articles = [...document.getElementsByTagName('article')]
-          articles.forEach((article) => {
-            if (article.style.backgroundColor !== 'green') {
-              article.style.backgroundColor = 'green'
-            } else {
-              article.style.backgroundColor = 'lightskyblue'
-            }
-          })
-        }}
-      >
-        <b>Price:</b>
-        {price}
-      </h5>
-      <button type='button' onClick={clickHandler}>
-        Click!
-      </button>
-      <button type='button' onClick={() => complexFunction(id)}>
-        Complex Example
-      </button>
-    </article>
   )
 }
 
