@@ -44,8 +44,9 @@ function BookList() {
 }
 
 const Book = ({ id, img, title, author, illustrator, price }) => {
-  const clickHandler = () => {
-    console.log('Clicked')
+  // Function which takes an event parameter
+  const clickHandler = (e) => {
+    console.log(e.target)
   }
 
   const complexFunction = (id) => {
@@ -83,12 +84,7 @@ const Book = ({ id, img, title, author, illustrator, price }) => {
         <b>Price:</b>
         {price}
       </h5>
-      <button
-        type='button'
-        onClick={() => {
-          console.log('Clicked')
-        }}
-      >
+      <button type='button' onClick={clickHandler}>
         Click!
       </button>
       <button type='button' onClick={() => complexFunction(id)}>
