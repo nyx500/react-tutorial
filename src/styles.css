@@ -19,10 +19,42 @@ body {
   gap: 2rem;
 }
 
+.booklist article {
+  background-color: lightskyblue;
+  padding: 10px;
+  min-height: 580px;
+  border-radius: 8px;
+  border: 1px solid lightskyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booklist article img {
+  order: 1;
+}
+.booklist article h1 {
+  order: 2;
+}
+.booklist article h3 {
+  order: 3;
+}
+.booklist article h5 {
+  order: 4;
+  margin-top: auto;
+  justify-self: flex-end;
+}
+.booklist article button {
+  order: 5;
+  margin-top: auto;
+  justify-self: flex-end;
+}
+
 @media screen and (min-width: 768px) {
   .booklist {
     grid-template-columns: repeat(3, 1fr);
-    align-items: baseline;
+    align-items: flex-start;
+    justify-items: flex-start;
   }
 }
 
@@ -31,7 +63,8 @@ article h3 {
 }
 
 img {
-  height: 70%;
-  width: auto;
-  object-fit: cover;
+  width: 100%;
+  object-fit: contain;
+  height: 400px;
+  align-self: flex-start;
 }
