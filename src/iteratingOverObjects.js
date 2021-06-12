@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import './styles.css'
 
+// An array of book objects
 const books = [
   {
     img: 'https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX482_BO1,204,203,200_.jpg',
@@ -18,39 +19,22 @@ const books = [
   },
 ]
 
-// Returns a stateless functional component
-// Always return JSX
-// props is short for properties
-// can put in props into the component whenever you use it
-// use .map() inside the section you are returning to get the list of components based on an object
+// Map over books and use the object to return JSX for every iteration
 function BookList() {
   return (
     <section className='booklist'>
       {books.map((book) => {
-        return <Book book={book}></Book>
+        const { img, title, author, price } = book
+        return (
+          <div>
+            <img src={img}></img>
+            <h3>{title}</h3>
+            <h3>{author}</h3>
+            <h5>{price}</h5>
+          </div>
+        )
       })}
     </section>
-  )
-}
-
-const Book = ({ book: { img, title, author, price } }) => {
-  return (
-    <article className='book'>
-      <img src={img} alt='book' />
-      <h1>{title}</h1>
-      <h3>{author}</h3>
-      <h5
-        style={{
-          color: '#617d98',
-          fontSize: '0.75rem',
-          margin: '0.25rem',
-          letterSpacing: '0.5px',
-        }}
-      >
-        <b>Price:</b>
-        {price}
-      </h5>
-    </article>
   )
 }
 

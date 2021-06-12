@@ -22,18 +22,20 @@ const books = [
 // Always return JSX
 // props is short for properties
 // can put in props into the component whenever you use it
-// use .map() inside the section you are returning to get the list of components based on an object
 function BookList() {
   return (
     <section className='booklist'>
       {books.map((book) => {
-        return <Book book={book}></Book>
+        const { img, title, author, price } = book
+        return (
+          <Book img={img} title={title} author={author} price={price}></Book>
+        )
       })}
     </section>
   )
 }
 
-const Book = ({ book: { img, title, author, price } }) => {
+const Book = ({ img, title, author, price }) => {
   return (
     <article className='book'>
       <img src={img} alt='book' />

@@ -18,22 +18,27 @@ const books = [
   },
 ]
 
+// Creates an array out of the book object array that can be rendered in JSX in the component
+const newBooks = books.map((book, index) => {
+  return (
+    <div>
+      <img src={book.img} alt='book image'></img>
+      <h1>{book.title}</h1>
+      <h2>{book.author}</h2>
+      <h5>{book.price}</h5>
+    </div>
+  )
+})
+
 // Returns a stateless functional component
 // Always return JSX
 // props is short for properties
 // can put in props into the component whenever you use it
-// use .map() inside the section you are returning to get the list of components based on an object
 function BookList() {
-  return (
-    <section className='booklist'>
-      {books.map((book) => {
-        return <Book book={book}></Book>
-      })}
-    </section>
-  )
+  return <section className='booklist'>{newBooks}</section>
 }
 
-const Book = ({ book: { img, title, author, price } }) => {
+const Book = ({ img, title, author, price }) => {
   return (
     <article className='book'>
       <img src={img} alt='book' />
